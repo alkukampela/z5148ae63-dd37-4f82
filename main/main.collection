@@ -1,7 +1,7 @@
 name: "default"
 collection_instances {
-  id: "level"
-  collection: "/level/level.collection"
+  id: "ground"
+  collection: "/level/ground/ground.collection"
   position {
     x: 0.0
     y: 0.0

@@ -1,16 +1,12 @@
 key_trigger {
-  input: KEY_SPACE
-  action: "jump"
+  input: KEY_Z
+  action: "mustard"
 }
 key_trigger {
-  input: KEY_ENTER
-  action: "jump"
+  input: KEY_X
+  action: "ketchup"
 }
-mouse_trigger {
-  input: MOUSE_BUTTON_1
-  action: "touch"
-}
-touch_trigger {
-  input: TOUCH_MULTI
-  action: "touch"
+key_trigger {
+  input: KEY_C
+  action: "mayonaise"
 }

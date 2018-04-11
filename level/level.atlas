@@ -1,11 +1,5 @@
 images {
-  image: "/level/images/ground01.png"
-}
-images {
-  image: "/level/images/ground02.png"
-}
-images {
-  image: "/level/images/rock_planks.png"
+  image: "/level/ground/images/ground.png"
 }
 margin: 0
 extrude_borders: 0

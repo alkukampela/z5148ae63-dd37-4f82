@@ -1,0 +1,12 @@
+images {
+  image: "/protagonist/images/ketchup.png"
+}
+images {
+  image: "/protagonist/images/mayonaise.png"
+}
+images {
+  image: "/protagonist/images/mustard.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

@@ -1,0 +1,21 @@
+local groundPieces =  {"ground0", "ground1"}
+local pieceWidth = 1280
+
+function init(self) 
+	self.speed = 360  -- Speed in pixels/s
+end
+
+function update(self, dt) 
+
+	for i, groundPiece in ipairs(groundPieces) do
+		local position = go.get_position(groundPiece)
+
+		if position.x <= (-1 * pieceWidth) then
+			position.x =  position.x + (2 * pieceWidth)
+		end
+
+		position.x = position.x - self.speed * dt 
+		go.set_position(position, groundPiece) 
+	end
+
+end
