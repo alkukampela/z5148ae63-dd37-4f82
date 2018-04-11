@@ -8,12 +8,13 @@ local function set_state(self, new_state)
 			msg.post(state, "disable")
 		end
 	end
+
+	self.current_state = string.sub(new_state, 7)
 end
 
 function init(self)
 	-- this tells the engine to send input to on_input() in this script
 	msg.post(".", "acquire_input_focus")
-
 	set_state(self,  "state_ketchup")
 end
 
