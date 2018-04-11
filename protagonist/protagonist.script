@@ -1,0 +1,50 @@
+
+local states = { "state_ketchup", "state_mustard", "state_mayo" }
+
+-- gravity pulling the player down in pixel units/sˆ2
+local gravity = -20
+
+local function set_state(self, new_state)
+	for i, state in ipairs(states) do
+		if new_state == state then
+			msg.post(state, "enable")
+		else
+			msg.post(state, "disable")
+		end
+
+	end
+end
+
+
+function init(self)
+	-- this tells the engine to send input to on_input() in this script
+	msg.post(".", "acquire_input_focus")
+
+	-- save the starting position
+	self.position = go.get_position()
+
+	set_state(self,  "state_ketchup")
+	
+	-- keep track of movement vector and if there is ground contact
+	self.velocity = vmath.vector3(0, 0, 0)
+end
+
+function final(self)
+	-- Return input focus when the object is deleted
+	msg.post(".", "release_input_focus")
+end
+
+
+function on_input(self, action_id, action)
+	if action_id == hash("mayo") then
+		set_state(self, "state_mayo")
+	elseif action_id == hash("mustard") then
+		set_state(self, "state_mustard")
+	elseif action_id == hash("ketchup") then
+		set_state(self, "state_ketchup")
+	end
+end
+
+
+
+

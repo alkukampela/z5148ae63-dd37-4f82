@@ -2,7 +2,7 @@ images {
   image: "/protagonist/images/ketchup.png"
 }
 images {
-  image: "/protagonist/images/mayonaise.png"
+  image: "/protagonist/images/mayo.png"
 }
 images {
   image: "/protagonist/images/mustard.png"

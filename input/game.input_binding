@@ -8,5 +8,5 @@ key_trigger {
 }
 key_trigger {
   input: KEY_C
-  action: "mayonaise"
+  action: "mayo"
 }
