@@ -17,5 +17,8 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("add_score") and self.stopped == false then
 		self.score = self.score + 1
 		msg.post("ui#gui", "set_score", { score = self.score })
+	elseif message_id == hash("new_game") then
+		print("new game started")
+		msg.post("spawner#spawner", "start")
 	end
 end

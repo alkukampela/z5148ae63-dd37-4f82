@@ -27,5 +27,7 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("stop") then
 		self.stopped = true
+	elseif message_id == hash("start") then
+		self.stopped = false
 	end
 end
