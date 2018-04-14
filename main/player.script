@@ -1,4 +1,4 @@
-local states = { "state_ketchup", "state_mustard", "state_mayo" }
+local states = { "state_ketchup", "state_mustard", "state_mayo", "state_kurkkusalaatti" }
 local lanes = 4
 
 local function set_state(self, new_state)
@@ -47,6 +47,8 @@ function on_input(self, action_id, action)
 		set_state(self, "state_mustard")
 	elseif action_id == hash("ketchup") then
 		set_state(self, "state_ketchup")
+	elseif action_id == hash("kurkkusalaatti") then
+		set_state(self, "state_kurkkusalaatti")
 	elseif action_id == hash("left") and action.pressed then
 		set_lane(self, self.lane - 1)
 	elseif action_id == hash("right") and action.pressed then
