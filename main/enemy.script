@@ -32,7 +32,7 @@ function update(self, dt)
 
 	if go.get_position().y < 0 then
 		print("out of bounds")
-		msg.post("main.script", "out_of_bounds")
+		msg.post("main#script", "out_of_bounds")
 		go.delete()
 	end
 	
