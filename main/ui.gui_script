@@ -18,7 +18,7 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("set_score") then
 		local n = gui.get_node("score")
-		gui.set_text(n, string.format("%07d", message.score))
+		gui.set_text(n, string.format("%09d", message.score))
 	elseif message_id == hash("game_over") then
 		local n = gui.get_node("game_over")
 		gui.set_enabled(n, true)
