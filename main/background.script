@@ -3,8 +3,7 @@ local pieceHeight = 960
 local layers = {
 	{ speed = 20, pieces = { "bg1#sprite1", "bg1#sprite2" } },
 	{ speed = 30, pieces = { "bg2#sprite1", "bg2#sprite2" } },
-	{ speed = 40, pieces = { "bg3#sprite1", "bg3#sprite2" } },
-	{ speed = 50, pieces = { "bg4#sprite1", "bg4#sprite2" } }
+	{ speed = 40, pieces = { "bg3#sprite1", "bg3#sprite2" } }
 }
 
 function update(self, dt) 
