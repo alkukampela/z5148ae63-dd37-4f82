@@ -1,0 +1,36 @@
+go.property("velocity", vmath.vector3())
+
+function init(self)
+	-- Add initialization code here
+	-- Remove this function if not needed
+	self.velocity = vmath.vector3(0, -100, 0)
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+
+	print(self.velocity)
+	
+	local p = go.get_position() + self.velocity * dt
+	go.set_position(p)
+	
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end
