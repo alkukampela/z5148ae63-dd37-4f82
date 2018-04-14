@@ -9,7 +9,6 @@ function update(self, dt)
 
 	for i, piece in ipairs(pieces) do
 		local position = go.get_position(piece)
-		print(position.y)
 		
 		if position.y <= (pieceHeight / -2) then
 			position.y = pieceHeight / 2
