@@ -7,6 +7,10 @@ fonts {
   name: "monoton"
   font: "/assets/fonts/monoton.font"
 }
+fonts {
+  name: "fredoka"
+  font: "/assets/fonts/fredoka.font"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -15,7 +19,7 @@ background_color {
 }
 nodes {
   position {
-    x: 530.0
+    x: 547.0
     y: 919.0
     z: 0.0
     w: 1.0
@@ -47,7 +51,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "0000000"
-  font: "monoton"
+  font: "fredoka"
   id: "score"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -109,7 +113,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "GAME OVER"
-  font: "monoton"
+  font: "fredoka"
   id: "game_over"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -139,8 +143,8 @@ nodes {
 }
 nodes {
   position {
-    x: 297.55
-    y: 421.528
+    x: 303.55
+    y: 455.528
     z: 0.0
     w: 1.0
   }
@@ -171,7 +175,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "START NEW GAME"
-  font: "monoton"
+  font: "fredoka"
   id: "button"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
