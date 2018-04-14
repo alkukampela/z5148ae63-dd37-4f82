@@ -20,7 +20,10 @@ function init(self)
 	self.display_width = tonumber(sys.get_config("display.width"))
 
 	self.timer = 100
+	self.time_adjuster = 80
+	
 	self.velocity = -150
+	
 	self.stopped = false
 	self.enemies = {}
 end
@@ -36,7 +39,12 @@ function update(self)
 		table.insert(self.enemies, id)
 		
 		-- Schedule next spawn and its velocity
-		self.timer = math.random(100) + 80;
+		self.timer = math.random(100) + self.time_adjuster;
+
+		if self.time_adjuster > 0 then
+			self.time_adjuster = self.time_adjuster - 1
+		end
+		
 		self.velocity = self.velocity - math.random(20)
 	end
 
