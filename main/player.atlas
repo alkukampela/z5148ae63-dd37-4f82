@@ -1,5 +1,5 @@
 animations {
-  id: "player_idle"
+  id: "green_idle"
   images {
     image: "/assets/images/idle-01.png"
   }
@@ -18,37 +18,18 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "left_move"
+  id: "blue_idle"
   images {
-    image: "/assets/images/left-01.png"
+    image: "/assets/images/blue-idle-01.png"
   }
   images {
-    image: "/assets/images/left-02.png"
+    image: "/assets/images/blue-idle-02.png"
   }
   images {
-    image: "/assets/images/left-03.png"
+    image: "/assets/images/blue-idle-03.png"
   }
   images {
-    image: "/assets/images/left-04.png"
-  }
-  playback: PLAYBACK_LOOP_FORWARD
-  fps: 6
-  flip_horizontal: 0
-  flip_vertical: 0
-}
-animations {
-  id: "right_move"
-  images {
-    image: "/assets/images/right-01.png"
-  }
-  images {
-    image: "/assets/images/right-02.png"
-  }
-  images {
-    image: "/assets/images/right-03.png"
-  }
-  images {
-    image: "/assets/images/right-04.png"
+    image: "/assets/images/blue-idle-04.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 6
