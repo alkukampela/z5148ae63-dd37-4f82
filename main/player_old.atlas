@@ -1,0 +1,15 @@
+images {
+  image: "/assets/images/ketchup.png"
+}
+images {
+  image: "/assets/images/mayo.png"
+}
+images {
+  image: "/assets/images/mustard.png"
+}
+images {
+  image: "/assets/images/kurkkusalaatti.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

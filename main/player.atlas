@@ -1,14 +1,59 @@
-images {
-  image: "/assets/images/ketchup.png"
+animations {
+  id: "player_idle"
+  images {
+    image: "/assets/images/idle-01.png"
+  }
+  images {
+    image: "/assets/images/idle-02.png"
+  }
+  images {
+    image: "/assets/images/idle-03.png"
+  }
+  images {
+    image: "/assets/images/idle-04.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 6
+  flip_horizontal: 0
+  flip_vertical: 0
 }
-images {
-  image: "/assets/images/mayo.png"
+animations {
+  id: "left_move"
+  images {
+    image: "/assets/images/left-01.png"
+  }
+  images {
+    image: "/assets/images/left-02.png"
+  }
+  images {
+    image: "/assets/images/left-03.png"
+  }
+  images {
+    image: "/assets/images/left-04.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 6
+  flip_horizontal: 0
+  flip_vertical: 0
 }
-images {
-  image: "/assets/images/mustard.png"
-}
-images {
-  image: "/assets/images/kurkkusalaatti.png"
+animations {
+  id: "right_move"
+  images {
+    image: "/assets/images/right-01.png"
+  }
+  images {
+    image: "/assets/images/right-02.png"
+  }
+  images {
+    image: "/assets/images/right-03.png"
+  }
+  images {
+    image: "/assets/images/right-04.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 6
+  flip_horizontal: 0
+  flip_vertical: 0
 }
 margin: 0
 extrude_borders: 0
