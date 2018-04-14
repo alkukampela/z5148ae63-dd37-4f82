@@ -7,7 +7,8 @@ end
 
 function update(self)
 	if self.timer <= 0 then
-		local pos_x = math.random(80, self.display_width)
+		local lane = math.random(4)
+		local pos_x = (lane - 1) * 160 + 80
 		local object_pos = vmath.vector3(pos_x, self.display_height-40, 0)
 		factory.create("#objectfactory", object_pos, nil)
 		self.timer = 100;
