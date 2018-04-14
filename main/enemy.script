@@ -8,8 +8,7 @@ function init(self)
 	msg.post("#mustard", "disable")
 	msg.post("#mayo", "disable")
 	msg.post("#ketchup", "disable")
-	msg.post("#kurkkusalaatti", "disable")
-	local state = math.random(4)
+	local state = math.random(3)
 	if state == 1 then
 		self.enemy_form = "mustard"
 		msg.post("#mustard", "enable")
@@ -19,9 +18,6 @@ function init(self)
 	elseif state == 3 then
 		self.enemy_form = "ketchup"
 		msg.post("#ketchup", "enable")
-	elseif state == 4 then
-		self.enemy_form = "kurkkusalaatti"
-		msg.post("#kurkkusalaatti", "enable")
 	end
 end
 

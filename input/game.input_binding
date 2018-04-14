@@ -18,7 +18,3 @@ key_trigger {
   input: KEY_RIGHT
   action: "right"
 }
-key_trigger {
-  input: KEY_V
-  action: "kurkkusalaatti"
-}
