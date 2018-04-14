@@ -2,6 +2,7 @@ function do_game_over_things(self)
 	self.stopped = true
 	msg.post("ui#gui", "game_over")
 	msg.post("spawner#spawner", "stop")
+	msg.post("spawner#spawner", "remove_all_enemies")
 end
 
 function init(self)

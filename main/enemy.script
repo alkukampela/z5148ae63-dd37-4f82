@@ -1,10 +1,6 @@
 go.property("velocity", vmath.vector3(0, -100, 0))
 
 function init(self)
-	-- Add initialization code here
-	-- Remove this function if not needed
-	--self.velocity = vmath.vector3(0, -150, 0)
-
 	msg.post("#mustard", "disable")
 	msg.post("#mayo", "disable")
 	msg.post("#ketchup", "disable")
@@ -28,6 +24,7 @@ function update(self, dt)
 
 	if go.get_position().y < 0 then
 		msg.post("main#script", "out_of_bounds")
+		msg.post("/spawner#spawner", "remove", { enemy_id = go.get_id() })
 		go.delete()
 	end
 
@@ -37,6 +34,7 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("collision_response") then
 		msg.post("main#script", "add_score")
 		msg.post("player/player#script", "collision", { form = self.enemy_form })
+		msg.post("/spawner#spawner", "remove", { enemy_id = go.get_id() })
 		go.delete()
 	end
 end
