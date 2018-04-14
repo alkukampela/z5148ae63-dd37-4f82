@@ -18,7 +18,7 @@ local function set_lane(self, lane)
 		self.lane = lane
 
 		local pos = go.get_position()
-		pos.x = (lane - 1) * 150 + 90
+		pos.x = (lane - 1) * 160 + 80
 		pos.y = 60
 
 		for i, state in ipairs(states) do
