@@ -32,7 +32,7 @@ function update(self)
 	if self.timer <= 0 and self.stopped == false then
 		local lane = math.random(4)
 		local pos_x = (lane - 1) * 160 + 80
-		local object_pos = vmath.vector3(pos_x, self.display_height - 40, 0)
+		local object_pos = vmath.vector3(pos_x, self.display_height + 90, 0)
 		local velocity = vmath.vector3(0, self.velocity, 0)
 
 		local id = factory.create("#enemyfactory", object_pos, nil, {velocity = velocity})
