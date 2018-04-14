@@ -3,7 +3,7 @@ go.property("velocity", vmath.vector3())
 function init(self)
 	-- Add initialization code here
 	-- Remove this function if not needed
-	self.velocity = vmath.vector3(0, -150, 0)
+	self.velocity = vmath.vector3(0, -250, 0)
 
 	msg.post("#mustard", "disable")
 	msg.post("#mayo", "disable")
@@ -11,20 +11,20 @@ function init(self)
 	msg.post("#kurkkusalaatti", "disable")
 	local state = math.random(4)
 	if state == 1 then
+		self.enemy_form = "mustard"
 		msg.post("#mustard", "enable")
 	elseif state == 2 then
+		self.enemy_form = "mayo"
 		msg.post("#mayo", "enable")
 	elseif state == 3 then
+		self.enemy_form = "ketchup"
 		msg.post("#ketchup", "enable")
 	elseif state == 4 then
+		self.enemy_form = "kurkkusalaatti"
 		msg.post("#kurkkusalaatti", "enable")
 	end
 end
 
-function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
-end
 
 function update(self, dt)
 	local p = go.get_position() + self.velocity * dt
@@ -41,6 +41,7 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("collision_response") then
 		msg.post("main#script", "add_score")
+		msg.post("player/player#script", "collision", { form = self.enemy_form })
 		print("enemy says: eating happened")
 	end
 end

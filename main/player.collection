@@ -1,4 +1,4 @@
-name: "default"
+name: "player"
 scale_along_z: 0
 embedded_instances {
   id: "state_mayo"
@@ -88,9 +88,9 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "controller"
+  id: "player"
   data: "components {\n"
-  "  id: \"player_script\"\n"
+  "  id: \"script\"\n"
   "  component: \"/main/player.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
