@@ -11,7 +11,7 @@ local function set_state(self, new_state)
 	-- Performs smooth transition between states
 	go.animate(self.current_state .. "#player_sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_LINEAR, 0.25)
 	go.animate(new_state .. "#player_sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, 0.25)
-	msg.post("controller#transition_sound", "play_sound")
+	msg.post("player#transition_sound", "play_sound")
 
 	self.current_state = new_state
 end
@@ -27,7 +27,7 @@ local function set_lane(self, lane, animate)
 		for i, state in ipairs(states) do
 			if animate then
 				go.animate(state, "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_INSINE, 0.25)
-				msg.post("controller#move_sound", "play_sound")
+				msg.post("player#move_sound", "play_sound")
 			else
 				go.set_position(pos, state)
 			end
