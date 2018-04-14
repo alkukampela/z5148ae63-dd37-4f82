@@ -20,7 +20,7 @@ function init(self)
 	self.display_width = tonumber(sys.get_config("display.width"))
 
 	self.timer = 100
-	self.time_adjuster = 120
+	self.time_adjuster = 100
 
 	self.velocity = -250
 
