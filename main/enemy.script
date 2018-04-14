@@ -4,6 +4,21 @@ function init(self)
 	-- Add initialization code here
 	-- Remove this function if not needed
 	self.velocity = vmath.vector3(0, -100, 0)
+
+	msg.post("#mustard", "disable")
+	msg.post("#mayo", "disable")
+	msg.post("#ketchup", "disable")
+	msg.post("#kurkkusalaatti", "disable")
+	local state = math.random(4)
+	if state == 1 then
+		msg.post("#mustard", "enable")
+	elseif state == 2 then
+		msg.post("#mayo", "enable")
+	elseif state == 3 then
+		msg.post("#ketchup", "enable")
+	elseif state == 4 then
+		msg.post("#kurkkusalaatti", "enable")
+	end
 end
 
 function final(self)
