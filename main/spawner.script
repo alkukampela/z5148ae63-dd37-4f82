@@ -1,0 +1,6 @@
+function init(self)
+	self.display_height = tonumber(sys.get_config("display.height"))
+	
+	local object_pos = vmath.vector3(80, self.display_height-80, 0)
+	factory.create("#objectfactory", object_pos, nil)
+end
