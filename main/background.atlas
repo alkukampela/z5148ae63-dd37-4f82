@@ -7,6 +7,9 @@ images {
 images {
   image: "/assets/images/background-03.png"
 }
+images {
+  image: "/assets/images/background-04.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0
