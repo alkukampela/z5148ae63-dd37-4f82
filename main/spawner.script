@@ -1,6 +1,17 @@
 function init(self)
 	self.display_height = tonumber(sys.get_config("display.height"))
-	
-	local object_pos = vmath.vector3(80, self.display_height-80, 0)
-	factory.create("#objectfactory", object_pos, nil)
+	self.display_width = tonumber(sys.get_config("display.width"))
+
+	self.timer = 100;
+end
+
+function update(self)
+	if self.timer <= 0 then
+		local pos_x = math.random(80, self.display_width)
+		local object_pos = vmath.vector3(pos_x, self.display_height-40, 0)
+		factory.create("#objectfactory", object_pos, nil)
+		self.timer = 100;
+	end
+
+	self.timer = self.timer - 1
 end
