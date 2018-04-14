@@ -1,7 +1,7 @@
 name: "default"
 collection_instances {
   id: "ground"
-  collection: "/level/ground/ground.collection"
+  collection: "/main/ground.collection"
   position {
     x: 0.0
     y: 0.0
@@ -20,8 +20,8 @@ collection_instances {
   }
 }
 collection_instances {
-  id: "protagonist"
-  collection: "/protagonist/protagonist.collection"
+  id: "player"
+  collection: "/main/player.collection"
   position {
     x: 0.0
     y: 0.0
