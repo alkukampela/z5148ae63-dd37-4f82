@@ -76,6 +76,7 @@ function on_message(self, message_id, message, sender)
 			msg.post(self.current_state .. "#player_sprite", "play_animation", {id = hash(eat_animations[self.current_state])})
 		else
 			msg.post("/main#script", "wrong_collision")
+			msg.post(self.current_state .. "#player_sprite", "play_animation", {id = hash("game_over")})
 		end
 	end
 end

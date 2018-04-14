@@ -130,6 +130,49 @@ animations {
   flip_horizontal: 0
   flip_vertical: 0
 }
+animations {
+  id: "game_over"
+  images {
+    image: "/assets/images/game-over-01.png"
+  }
+  images {
+    image: "/assets/images/game-over-02.png"
+  }
+  images {
+    image: "/assets/images/game-over-03.png"
+  }
+  images {
+    image: "/assets/images/game-over-04.png"
+  }
+  images {
+    image: "/assets/images/game-over-05.png"
+  }
+  images {
+    image: "/assets/images/game-over-06.png"
+  }
+  images {
+    image: "/assets/images/game-over-07.png"
+  }
+  images {
+    image: "/assets/images/game-over-08.png"
+  }
+  images {
+    image: "/assets/images/game-over-09.png"
+  }
+  images {
+    image: "/assets/images/game-over-10.png"
+  }
+  images {
+    image: "/assets/images/game-over-11.png"
+  }
+  images {
+    image: "/assets/images/game-over-12.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 6
+  flip_horizontal: 0
+  flip_vertical: 0
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0
