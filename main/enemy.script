@@ -40,6 +40,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("collision_response") then
+		msg.post("main#script", "add_score")
 		print("enemy says: eating happened")
 	end
 end
