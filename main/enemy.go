@@ -1,3 +1,18 @@
+components {
+  id: "enemy"
+  component: "/main/enemy.script"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
 embedded_components {
   id: "collisionobject"
   type: "collisionobject"
@@ -7,6 +22,7 @@ embedded_components {
   "friction: 0.1\n"
   "restitution: 0.5\n"
   "group: \"object\"\n"
+  "mask: \"player\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
@@ -24,8 +40,8 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 31.52\n"
-  "  data: 19.186\n"
+  "  data: 30.0\n"
+  "  data: 30.0\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"
