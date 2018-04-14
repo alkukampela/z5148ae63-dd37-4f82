@@ -11,6 +11,7 @@ local function set_state(self, new_state)
 	-- Performs smooth transition between states
 	go.animate(self.current_state .. "#player_sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_LINEAR, 0.25)
 	go.animate(new_state .. "#player_sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, 0.25)
+	msg.post("controller#transition_sound", "play_sound")
 
 	self.current_state = new_state
 end
@@ -26,6 +27,7 @@ local function set_lane(self, lane, animate)
 		for i, state in ipairs(states) do
 			if animate then
 				go.animate(state, "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_INSINE, 0.25)		
+				msg.post("controller#move_sound", "play_sound")
 			else
 				go.set_position(pos, state)
 			end
@@ -50,17 +52,19 @@ function final(self)
 end
 
 function on_input(self, action_id, action)
-	if action_id == hash("mayo") then
-		set_state(self, "state_mayo")
-	elseif action_id == hash("mustard") then
-		set_state(self, "state_mustard")
-	elseif action_id == hash("ketchup") then
-		set_state(self, "state_ketchup")
-	elseif action_id == hash("kurkkusalaatti") then
-		set_state(self, "state_kurkkusalaatti")
-	elseif action_id == hash("left") and action.pressed then
-		set_lane(self, self.lane - 1, true)
-	elseif action_id == hash("right") and action.pressed then
-		set_lane(self, self.lane + 1, true)
-	end
+	if action.pressed then
+		if action_id == hash("mayo") then
+			set_state(self, "state_mayo")
+		elseif action_id == hash("mustard") then
+			set_state(self, "state_mustard")
+		elseif action_id == hash("ketchup") then
+			set_state(self, "state_ketchup")
+		elseif action_id == hash("kurkkusalaatti") then
+			set_state(self, "state_kurkkusalaatti")
+		elseif action_id == hash("left") then
+			set_lane(self, self.lane - 1, true)
+		elseif action_id == hash("right") then
+			set_lane(self, self.lane + 1, true)
+		end
+	end	
 end

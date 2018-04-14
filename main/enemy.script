@@ -1,9 +1,9 @@
-go.property("velocity", vmath.vector3())
+go.property("velocity", vmath.vector3(0, -100, 0))
 
 function init(self)
 	-- Add initialization code here
 	-- Remove this function if not needed
-	self.velocity = vmath.vector3(0, -150, 0)
+	--self.velocity = vmath.vector3(0, -150, 0)
 
 	msg.post("#mustard", "disable")
 	msg.post("#mayo", "disable")

@@ -1,16 +1,16 @@
 animations {
   id: "green_idle"
   images {
-    image: "/assets/images/idle-01.png"
+    image: "/assets/images/green-idle-01.png"
   }
   images {
-    image: "/assets/images/idle-02.png"
+    image: "/assets/images/green-idle-02.png"
   }
   images {
-    image: "/assets/images/idle-03.png"
+    image: "/assets/images/green-idle-03.png"
   }
   images {
-    image: "/assets/images/idle-04.png"
+    image: "/assets/images/green-idle-04.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 6

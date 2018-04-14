@@ -38,7 +38,7 @@ embedded_instances {
   "  }\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"objectfactory\"\n"
+  "  id: \"enemyfactory\"\n"
   "  type: \"factory\"\n"
   "  data: \"prototype: \\\"/main/enemy.go\\\"\\n"
   "load_dynamically: false\\n"

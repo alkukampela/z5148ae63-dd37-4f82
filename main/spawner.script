@@ -2,7 +2,8 @@ function init(self)
 	self.display_height = tonumber(sys.get_config("display.height"))
 	self.display_width = tonumber(sys.get_config("display.width"))
 
-	self.timer = 100;
+	self.timer = 100
+	self.velocity = -150
 end
 
 function update(self)
@@ -10,10 +11,13 @@ function update(self)
 		local lane = math.random(4)
 		local pos_x = (lane - 1) * 160 + 80
 		local object_pos = vmath.vector3(pos_x, self.display_height - 40, 0)
-		local v = vmath.vector3(0, 100, 0)
+		local velocity = vmath.vector3(0, self.velocity, 0)
 		
-		factory.create("#objectfactory", object_pos, nil)
-		self.timer = 100;
+		factory.create("#enemyfactory", object_pos, nil, {velocity = velocity})
+
+		-- Schedule next spawn and its velocity
+		self.timer = math.random(100) + 80;
+		self.velocity = self.velocity - math.random(20)
 	end
 
 	self.timer = self.timer - 1
