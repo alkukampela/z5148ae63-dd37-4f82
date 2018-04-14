@@ -10,3 +10,11 @@ key_trigger {
   input: KEY_C
   action: "mayo"
 }
+key_trigger {
+  input: KEY_LEFT
+  action: "left"
+}
+key_trigger {
+  input: KEY_RIGHT
+  action: "right"
+}
