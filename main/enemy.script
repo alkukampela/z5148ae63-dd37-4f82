@@ -8,39 +8,35 @@ function init(self)
 	msg.post("#mustard", "disable")
 	msg.post("#mayo", "disable")
 	msg.post("#ketchup", "disable")
-	msg.post("#kurkkusalaatti", "disable")
-	local state = math.random(4)
+	local state = math.random(3)
 	if state == 1 then
+		self.enemy_form = "mustard"
 		msg.post("#mustard", "enable")
 	elseif state == 2 then
+		self.enemy_form = "mayo"
 		msg.post("#mayo", "enable")
 	elseif state == 3 then
+		self.enemy_form = "ketchup"
 		msg.post("#ketchup", "enable")
-	elseif state == 4 then
-		msg.post("#kurkkusalaatti", "enable")
 	end
 end
 
-function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
-end
 
 function update(self, dt)
 	local p = go.get_position() + self.velocity * dt
 	go.set_position(p)
 
 	if go.get_position().y < 0 then
-		print("out of bounds")
 		msg.post("main#script", "out_of_bounds")
 		go.delete()
 	end
-	
+
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("collision_response") then
 		msg.post("main#script", "add_score")
-		print("enemy says: eating happened")
+		msg.post("player/player#script", "collision", { form = self.enemy_form })
+		go.delete()
 	end
 end

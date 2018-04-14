@@ -1,4 +1,4 @@
-local states = { "state_mayo", "state_mustard", "state_ketchup", "state_kurkkusalaatti" }
+local states = { "state_mayo", "state_mustard", "state_ketchup"}
 local lanes = 4
 
 local function init_states(self)
@@ -26,7 +26,7 @@ local function set_lane(self, lane, animate)
 
 		for i, state in ipairs(states) do
 			if animate then
-				go.animate(state, "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_INSINE, 0.25)		
+				go.animate(state, "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_INSINE, 0.25)
 				msg.post("controller#move_sound", "play_sound")
 			else
 				go.set_position(pos, state)
@@ -34,7 +34,7 @@ local function set_lane(self, lane, animate)
 		end
 	end
 end
-	 
+
 function init(self)
 	self.lane = 1
 	self.current_state = "state_mayo"
@@ -51,6 +51,17 @@ function final(self)
 	msg.post(".", "release_input_focus")
 end
 
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("collision") then
+		if self.current_state == "state_" .. message.form then
+			print("hyvin meni")
+		else
+			msg.post("/main#script", "wrong_collision")
+		end
+	end
+end
+
 function on_input(self, action_id, action)
 	if action.pressed then
 		if action_id == hash("mayo") then
@@ -59,12 +70,10 @@ function on_input(self, action_id, action)
 			set_state(self, "state_mustard")
 		elseif action_id == hash("ketchup") then
 			set_state(self, "state_ketchup")
-		elseif action_id == hash("kurkkusalaatti") then
-			set_state(self, "state_kurkkusalaatti")
 		elseif action_id == hash("left") then
 			set_lane(self, self.lane - 1, true)
 		elseif action_id == hash("right") then
 			set_lane(self, self.lane + 1, true)
 		end
-	end	
+	end
 end
