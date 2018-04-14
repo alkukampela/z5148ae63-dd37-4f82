@@ -7,3 +7,7 @@ shared_state = 1
 [project]
 title = z5148ae63-dd37-4f82
 
+[display]
+width = 640
+height = 960
+
