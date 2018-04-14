@@ -1,4 +1,14 @@
 local states = { "state_mayo", "state_mustard", "state_ketchup"}
+local idle_animations = {
+	["state_mayo"] = "green_idle",
+	["state_mustard"] = "yellow_idle",
+	["state_ketchup"] = "blue_idle"
+}
+local eat_animations = {
+	["state_mayo"] = "green_eat",
+	["state_mustard"] = "yellow_eat",
+	["state_ketchup"] = "blue_eat"
+}
 local lanes = 4
 
 local function init_states(self)
@@ -39,10 +49,13 @@ function init(self)
 	self.lane = 1
 	self.current_state = "state_mayo"
 
+	-- If eat time > 0, then eating time it is (eat_time is the duration to run the eating animation)
+	self.eat_time = 0
+
 	-- this tells the engine to send input to on_input() in this script
 	msg.post(".", "acquire_input_focus")
 	init_states(self)
-	set_state(self,  "state_mayo")
+	set_state(self,  "state_mustard")
 	set_lane(self, 1, false)
 end
 
@@ -51,11 +64,22 @@ function final(self)
 	msg.post(".", "release_input_focus")
 end
 
+function update(self, dt)
+	print("update! " .. dt)
+	if self.eat_time > 0 then
+		self.eat_time = self.eat_time - dt
+		if self.eat_time < 0 then
+			msg.post(self.current_state .. "#player_sprite", "play_animation", {id = hash(idle_animations[self.current_state])})
+		end
+	end
+end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("collision") then
 		if self.current_state == "state_" .. message.form then
 			print("hyvin meni")
+			msg.post(self.current_state .. "#player_sprite", "play_animation", {id = hash(eat_animations[self.current_state])})
+			self.eat_time = 0.75
 		else
 			msg.post("/main#script", "wrong_collision")
 		end
