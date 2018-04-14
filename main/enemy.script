@@ -1,10 +1,8 @@
 go.property("velocity", vmath.vector3(0, -100, 0))
 
 function init(self)
-	-- Add initialization code here
-	-- Remove this function if not needed
-	--self.velocity = vmath.vector3(0, -150, 0)
-
+	self.alive = true
+	
 	msg.post("#mustard", "disable")
 	msg.post("#mayo", "disable")
 	msg.post("#ketchup", "disable")
@@ -34,9 +32,13 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("collision_response") then
+	if message_id == hash("animation_done") and not self.alive then
+		go.delete()
+	elseif message_id == hash("collision_response") and self.alive then
 		msg.post("main#script", "add_score")
 		msg.post("player/player#script", "collision", { form = self.enemy_form })
-		go.delete()
+		msg.post("#" .. self.enemy_form, "play_animation", {id = hash(self.enemy_form .. "_fade")})
+		self.velocity.y = -30
+		self.alive = false
 	end
 end

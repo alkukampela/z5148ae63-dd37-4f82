@@ -136,6 +136,81 @@ animations {
   flip_horizontal: 0
   flip_vertical: 0
 }
+animations {
+  id: "ketchup_fade"
+  images {
+    image: "/assets/images/collision/blue-fading-01.png"
+  }
+  images {
+    image: "/assets/images/collision/blue-fading-02.png"
+  }
+  images {
+    image: "/assets/images/collision/blue-fading-03.png"
+  }
+  images {
+    image: "/assets/images/collision/blue-fading-04.png"
+  }
+  images {
+    image: "/assets/images/collision/blue-fading-05.png"
+  }
+  images {
+    image: "/assets/images/collision/blue-fading-06.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 12
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "mayo_fade"
+  images {
+    image: "/assets/images/collision/green-fading-01.png"
+  }
+  images {
+    image: "/assets/images/collision/green-fading-02.png"
+  }
+  images {
+    image: "/assets/images/collision/green-fading-03.png"
+  }
+  images {
+    image: "/assets/images/collision/green-fading-04.png"
+  }
+  images {
+    image: "/assets/images/collision/green-fading-05.png"
+  }
+  images {
+    image: "/assets/images/collision/green-fading-06.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 12
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "mustard_fade"
+  images {
+    image: "/assets/images/collision/yellow-fading-01.png"
+  }
+  images {
+    image: "/assets/images/collision/yellow-fading-02.png"
+  }
+  images {
+    image: "/assets/images/collision/yellow-fading-03.png"
+  }
+  images {
+    image: "/assets/images/collision/yellow-fading-04.png"
+  }
+  images {
+    image: "/assets/images/collision/yellow-fading-05.png"
+  }
+  images {
+    image: "/assets/images/collision/yellow-fading-06.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 12
+  flip_horizontal: 0
+  flip_vertical: 0
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0
