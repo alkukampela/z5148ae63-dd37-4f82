@@ -20,7 +20,7 @@ function init(self)
 	self.display_width = tonumber(sys.get_config("display.width"))
 
 	self.timer = 100
-	self.velocity = -150
+	self.velocity = -180
 	self.stopped = false
 	self.enemies = {}
 end
