@@ -2,7 +2,7 @@ go.property("velocity", vmath.vector3(0, -100, 0))
 
 function init(self)
 	self.alive = true
-	
+
 	msg.post("#mustard", "disable")
 	msg.post("#mayo", "disable")
 	msg.post("#ketchup", "disable")
@@ -26,6 +26,7 @@ function update(self, dt)
 
 	if go.get_position().y < 0 then
 		msg.post("main#script", "out_of_bounds")
+		msg.post("/spawner#spawner", "remove", { enemy_id = go.get_id() })
 		go.delete()
 	end
 
@@ -37,6 +38,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("collision_response") and self.alive then
 		msg.post("main#script", "add_score")
 		msg.post("player/player#script", "collision", { form = self.enemy_form })
+		msg.post("/spawner#spawner", "remove", { enemy_id = go.get_id() })
 		msg.post("#" .. self.enemy_form, "play_animation", {id = hash(self.enemy_form .. "_fade")})
 		self.velocity.y = -30
 		self.alive = false
