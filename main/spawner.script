@@ -15,8 +15,8 @@ local function remove_all_enemies(self)
 end
 
 local function reset_variables(self)
-	self.time_adjuster = 100
-	self.velocity = -250
+	self.time_adjuster = 90
+	self.velocity = -200
 	self.timer = 100
 	self.stopped = false
 end
