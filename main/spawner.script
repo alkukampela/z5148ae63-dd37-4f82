@@ -55,7 +55,10 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("stop") then
 		self.stopped = true
 	elseif message_id == hash("start") then
-		init(self)
+		self.timer = 100
+		self.time_adjuster = 80
+		self.velocity = -150
+		self.stopped = false
 	elseif message_id == hash("remove") then
 		remove_enemy(self, message.enemy_id)
 	elseif message_id == hash("remove_all_enemies") then
