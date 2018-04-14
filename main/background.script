@@ -1,21 +1,24 @@
-local pieces =  {"#sprite1", "#sprite2"}
 local pieceHeight = 960
 
-function init(self) 
-	self.speed = 360  -- Speed in pixels/s
-end
+local layers = {
+	{ speed = 20, pieces = { "bg1#sprite1", "bg1#sprite2" } },
+	{ speed = 30, pieces = { "bg2#sprite1", "bg2#sprite2" } },
+	{ speed = 40, pieces = { "bg3#sprite1", "bg3#sprite2" } }
+}
 
 function update(self, dt) 
 
-	for i, piece in ipairs(pieces) do
-		local position = go.get_position(piece)
-		
-		if position.y <= (pieceHeight / -2) then
-			position.y = pieceHeight / 2
-		end
+	for i, layer in ipairs(layers) do
+		for i, piece in ipairs(layer.pieces) do
+			local position = go.get_position(piece)
+			
+			if position.y <= (pieceHeight / -2) then
+				position.y = pieceHeight / 2
+			end
 
-		position.y = position.y - self.speed * dt 
-		go.set_position(position, piece) 
+			position.y = position.y - layer.speed * dt 
+			go.set_position(position, piece) 
+		end
 	end
 
 end

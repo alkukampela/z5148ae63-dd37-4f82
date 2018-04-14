@@ -1,6 +1,12 @@
 images {
   image: "/assets/images/background-01.png"
 }
+images {
+  image: "/assets/images/background-02.png"
+}
+images {
+  image: "/assets/images/background-03.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0
