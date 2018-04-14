@@ -40,7 +40,7 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"objectfactory\"\n"
   "  type: \"factory\"\n"
-  "  data: \"prototype: \\\"/main/object.go\\\"\\n"
+  "  data: \"prototype: \\\"/main/enemy.go\\\"\\n"
   "load_dynamically: false\\n"
   "\"\n"
   "  position {\n"
