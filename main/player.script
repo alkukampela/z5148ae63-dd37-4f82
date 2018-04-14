@@ -1,4 +1,5 @@
-local states = { "state_ketchup", "state_mustard", "state_mayo", "state_kurkkusalaatti" }
+--local states = { "state_ketchup", "state_mustard", "state_mayo", "state_kurkkusalaatti" }
+local states = { "state_mayo", "state_mustard", "state_ketchup", "state_kurkkusalaatti" }
 local lanes = 4
 
 local function set_state(self, new_state)
@@ -30,7 +31,7 @@ end
 function init(self)
 	-- this tells the engine to send input to on_input() in this script
 	msg.post(".", "acquire_input_focus")
-	set_state(self,  "state_ketchup")
+	set_state(self,  "state_mayo")
 	set_lane(self, 1)
 	self.lane = 1
 end
