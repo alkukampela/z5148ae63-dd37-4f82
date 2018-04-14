@@ -52,7 +52,11 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("collision") then
-		print(message.form)
+		if self.current_state == "state_" .. message.form then
+			print("hyvin meni")
+		else
+			msg.post("/main#script", "wrong_collision")
+		end
 	end
 end
 

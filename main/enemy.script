@@ -31,7 +31,6 @@ function update(self, dt)
 	go.set_position(p)
 
 	if go.get_position().y < 0 then
-		print("out of bounds")
 		msg.post("main#script", "out_of_bounds")
 		go.delete()
 	end
@@ -42,6 +41,6 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("collision_response") then
 		msg.post("main#script", "add_score")
 		msg.post("player/player#script", "collision", { form = self.enemy_form })
-		print("enemy says: eating happened")
+		go.delete()
 	end
 end

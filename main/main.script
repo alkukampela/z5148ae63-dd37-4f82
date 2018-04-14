@@ -4,13 +4,14 @@ function do_game_over_things(self)
 end
 
 
-
 function init(self)
 	self.score = 0
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("out_of_bounds") then
+		do_game_over_things(self)
+	elseif message_id == hash("wrong_collision") then
 		do_game_over_things(self)
 	elseif message_id == hash("add_score") then
 		self.score = self.score + 1
