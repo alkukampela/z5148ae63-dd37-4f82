@@ -11,6 +11,10 @@ local eat_animations = {
 }
 local lanes = 4
 
+local function animation_idle(self)
+	msg.post(self.current_state .. "#player_sprite", "play_animation", {id = hash(idle_animations[self.current_state])})
+end
+
 local function init_states(self)
 	for i, state in ipairs(states) do
 		go.set(state .. "#player_sprite", "tint.w", 0)
@@ -19,6 +23,7 @@ end
 
 local function set_state(self, new_state)
 	-- Performs smooth transition between states
+	animation_idle(self)
 	go.animate(self.current_state .. "#player_sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_LINEAR, 0.25)
 	go.animate(new_state .. "#player_sprite", "tint.w", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_LINEAR, 0.25)
 	msg.post("player#transition_sound", "play_sound")
@@ -49,9 +54,6 @@ function init(self)
 	self.lane = 1
 	self.current_state = "state_mayo"
 
-	-- If eat time > 0, then eating time it is (eat_time is the duration to run the eating animation)
-	self.eat_time = 0
-
 	-- this tells the engine to send input to on_input() in this script
 	msg.post(".", "acquire_input_focus")
 	init_states(self)
@@ -64,22 +66,13 @@ function final(self)
 	msg.post(".", "release_input_focus")
 end
 
-function update(self, dt)
-	print("update! " .. dt)
-	if self.eat_time > 0 then
-		self.eat_time = self.eat_time - dt
-		if self.eat_time < 0 then
-			msg.post(self.current_state .. "#player_sprite", "play_animation", {id = hash(idle_animations[self.current_state])})
-		end
-	end
-end
-
 function on_message(self, message_id, message, sender)
-	if message_id == hash("collision") then
+	if message_id == hash("animation_done") then
+		animation_idle(self)
+	elseif message_id == hash("collision") then
 		if self.current_state == "state_" .. message.form then
 			print("hyvin meni")
 			msg.post(self.current_state .. "#player_sprite", "play_animation", {id = hash(eat_animations[self.current_state])})
-			self.eat_time = 0.75
 		else
 			msg.post("/main#script", "wrong_collision")
 		end

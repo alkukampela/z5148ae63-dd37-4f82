@@ -47,7 +47,16 @@ animations {
   images {
     image: "/assets/images/green-eat-03.png"
   }
-  playback: PLAYBACK_LOOP_FORWARD
+  images {
+    image: "/assets/images/green-eat-01.png"
+  }
+  images {
+    image: "/assets/images/green-eat-02.png"
+  }
+  images {
+    image: "/assets/images/green-eat-03.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
   fps: 6
   flip_horizontal: 0
   flip_vertical: 0
@@ -82,7 +91,16 @@ animations {
   images {
     image: "/assets/images/blue-eat-03.png"
   }
-  playback: PLAYBACK_LOOP_FORWARD
+  images {
+    image: "/assets/images/blue-eat-01.png"
+  }
+  images {
+    image: "/assets/images/blue-eat-02.png"
+  }
+  images {
+    image: "/assets/images/blue-eat-03.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
   fps: 6
   flip_horizontal: 0
   flip_vertical: 0
@@ -98,7 +116,16 @@ animations {
   images {
     image: "/assets/images/yellow-eat-03.png"
   }
-  playback: PLAYBACK_LOOP_FORWARD
+  images {
+    image: "/assets/images/yellow-eat-01.png"
+  }
+  images {
+    image: "/assets/images/yellow-eat-02.png"
+  }
+  images {
+    image: "/assets/images/yellow-eat-03.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
   fps: 6
   flip_horizontal: 0
   flip_vertical: 0
