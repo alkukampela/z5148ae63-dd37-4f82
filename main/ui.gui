@@ -3,6 +3,10 @@ fonts {
   name: "system_font"
   font: "/builtins/fonts/system_font.font"
 }
+fonts {
+  name: "monoton"
+  font: "/assets/fonts/monoton.font"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -11,7 +15,7 @@ background_color {
 }
 nodes {
   position {
-    x: 559.0
+    x: 530.0
     y: 919.0
     z: 0.0
     w: 1.0
@@ -23,8 +27,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 3.723
-    y: 2.438
+    x: 0.5
+    y: 0.5
     z: 1.14
     w: 1.0
   }
@@ -42,8 +46,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "0000"
-  font: "system_font"
+  text: "0000000"
+  font: "monoton"
   id: "score"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -85,8 +89,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 7.132
-    y: 4.631
+    x: 1.0
+    y: 1.0
     z: 2.346
     w: 1.0
   }
@@ -105,7 +109,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "GAME OVER"
-  font: "system_font"
+  font: "monoton"
   id: "game_over"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
