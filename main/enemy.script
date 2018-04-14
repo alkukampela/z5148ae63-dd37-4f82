@@ -38,8 +38,7 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("animation_done") and not self.alive then
 		go.delete()
 	elseif message_id == hash("collision_response") and self.alive then
-		msg.post("main#script", "add_score", { points = self.points })
-		msg.post("player/player#script", "collision", { form = self.enemy_form })
+		msg.post("player/player#script", "collision", { form = self.enemy_form, points = self.points })
 		msg.post("/spawner#spawner", "remove", { enemy_id = go.get_id() })
 		msg.post("#" .. self.enemy_form, "play_animation", {id = hash(self.enemy_form .. "_fade")})
 		self.velocity.y = -30

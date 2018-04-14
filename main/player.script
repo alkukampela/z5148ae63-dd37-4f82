@@ -71,6 +71,7 @@ function on_message(self, message_id, message, sender)
 		animation_idle(self)
 	elseif message_id == hash("collision") then
 		if self.current_state == "state_" .. message.form then
+			msg.post("/main#script", "add_score", { points = message.points })
 			msg.post(self.current_state .. "#player_sprite", "play_animation", {id = hash(eat_animations[self.current_state])})
 		else
 			msg.post("/main#script", "wrong_collision")

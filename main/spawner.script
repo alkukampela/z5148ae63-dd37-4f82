@@ -7,7 +7,7 @@ function remove_enemy(self, enemy_id)
 	end
 end
 
-function remove_all_enemies(self) 
+function remove_all_enemies(self)
 	for key, enemy_id in pairs(self.enemies) do
 		go.delete(enemy_id)
 	end
@@ -20,7 +20,10 @@ function init(self)
 	self.display_width = tonumber(sys.get_config("display.width"))
 
 	self.timer = 100
-	self.velocity = -180
+	self.time_adjuster = 80
+
+	self.velocity = -150
+
 	self.stopped = false
 	self.enemies = {}
 end
@@ -31,12 +34,17 @@ function update(self)
 		local pos_x = (lane - 1) * 160 + 80
 		local object_pos = vmath.vector3(pos_x, self.display_height - 40, 0)
 		local velocity = vmath.vector3(0, self.velocity, 0)
-		
+
 		local id = factory.create("#enemyfactory", object_pos, nil, {velocity = velocity})
 		table.insert(self.enemies, id)
-		
+
 		-- Schedule next spawn and its velocity
-		self.timer = math.random(100) + 80;
+		self.timer = math.random(100) + self.time_adjuster;
+
+		if self.time_adjuster > 0 then
+			self.time_adjuster = self.time_adjuster - 1
+		end
+
 		self.velocity = self.velocity - math.random(20)
 	end
 
@@ -46,7 +54,7 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("stop") then
 		self.stopped = true
-	elseif message_id == hash("start") then		
+	elseif message_id == hash("start") then
 		self.timer = 100
 		self.velocity = -150
 		self.stopped = false

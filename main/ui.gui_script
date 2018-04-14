@@ -1,4 +1,5 @@
 function start_new_game(self)
+	self.stopped = 0
 	msg.post("main#script", "new_game")
 	
 	local n = gui.get_node("game_over")
@@ -8,18 +9,20 @@ function start_new_game(self)
 end
 
 function init(self) 
+	self.stopped = 0
 	local n = gui.get_node("game_over")
 	gui.set_enabled(n, false)
 	local n2 = gui.get_node("button")
 	gui.set_enabled(n2, false)
-	msg.post(".", "acquire_input_focus") 
+	msg.post(".", "acquire_input_focus")
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("set_score") then
 		local n = gui.get_node("score")
-		gui.set_text(n, string.format("%07d", message.score))
+		gui.set_text(n, string.format("%09d", message.score))
 	elseif message_id == hash("game_over") then
+		self.stopped = 1
 		local n = gui.get_node("game_over")
 		gui.set_enabled(n, true)
 		local n2 = gui.get_node("button")
@@ -28,9 +31,9 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-	if action_id == hash("click") and action.pressed then 
+	if (action_id == hash("click") and action.pressed) or action_id == hash("new_game") then 
 		local button = gui.get_node("button")
-		if gui.pick_node(button, action.x, action.y) then 
+		if (gui.pick_node(button, action.x, action.y) or action_id == hash("new_game")) and self.stopped == 1 then 
 			start_new_game(self)
 		end
 	end
