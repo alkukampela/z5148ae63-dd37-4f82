@@ -63,8 +63,8 @@ embedded_components {
 embedded_components {
   id: "ketchup"
   type: "sprite"
-  data: "tile_set: \"/main/player_old.atlas\"\n"
-  "default_animation: \"ketchup\"\n"
+  data: "tile_set: \"/main/enemy.atlas\"\n"
+  "default_animation: \"blue_enemy\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
@@ -83,8 +83,8 @@ embedded_components {
 embedded_components {
   id: "mayo"
   type: "sprite"
-  data: "tile_set: \"/main/player_old.atlas\"\n"
-  "default_animation: \"mayo\"\n"
+  data: "tile_set: \"/main/enemy.atlas\"\n"
+  "default_animation: \"blue_enemy\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
@@ -103,8 +103,8 @@ embedded_components {
 embedded_components {
   id: "mustard"
   type: "sprite"
-  data: "tile_set: \"/main/player_old.atlas\"\n"
-  "default_animation: \"mustard\"\n"
+  data: "tile_set: \"/main/enemy.atlas\"\n"
+  "default_animation: \"blue_enemy\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
@@ -123,8 +123,8 @@ embedded_components {
 embedded_components {
   id: "kurkkusalaatti"
   type: "sprite"
-  data: "tile_set: \"/main/player_old.atlas\"\n"
-  "default_animation: \"kurkkusalaatti\"\n"
+  data: "tile_set: \"/main/enemy.atlas\"\n"
+  "default_animation: \"blue_enemy\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""

@@ -1,0 +1,49 @@
+animations {
+  id: "blue_enemy"
+  images {
+    image: "/assets/images/enemy/blue-enemy-01.png"
+  }
+  images {
+    image: "/assets/images/enemy/blue-enemy-02.png"
+  }
+  images {
+    image: "/assets/images/enemy/blue-enemy-03.png"
+  }
+  images {
+    image: "/assets/images/enemy/blue-enemy-04.png"
+  }
+  images {
+    image: "/assets/images/enemy/blue-enemy-05.png"
+  }
+  images {
+    image: "/assets/images/enemy/blue-enemy-06.png"
+  }
+  images {
+    image: "/assets/images/enemy/blue-enemy-07.png"
+  }
+  images {
+    image: "/assets/images/enemy/blue-enemy-08.png"
+  }
+  images {
+    image: "/assets/images/enemy/blue-enemy-09.png"
+  }
+  images {
+    image: "/assets/images/enemy/blue-enemy-10.png"
+  }
+  images {
+    image: "/assets/images/enemy/blue-enemy-11.png"
+  }
+  images {
+    image: "/assets/images/enemy/blue-enemy-12.png"
+  }
+  images {
+    image: "/assets/images/enemy/blue-enemy-13.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0
