@@ -4,10 +4,11 @@ function init(self)
 
 	self.timer = 100
 	self.velocity = -150
+	self.stopped = false
 end
 
 function update(self)
-	if self.timer <= 0 then
+	if self.timer <= 0 and self.stopped == false then
 		local lane = math.random(4)
 		local pos_x = (lane - 1) * 160 + 80
 		local object_pos = vmath.vector3(pos_x, self.display_height - 40, 0)
@@ -21,4 +22,10 @@ function update(self)
 	end
 
 	self.timer = self.timer - 1
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("stop") then
+		self.stopped = true
+	end
 end
