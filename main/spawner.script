@@ -1,4 +1,4 @@
-function remove_enemy(self, enemy_id) 
+local function remove_enemy(self, enemy_id) 
 	for key, value in pairs(self.enemies) do
 		if value == enemy_id then
 			table.remove(self.enemies, key)
@@ -7,24 +7,25 @@ function remove_enemy(self, enemy_id)
 	end
 end
 
-function remove_all_enemies(self)
+local function remove_all_enemies(self)
 	for key, enemy_id in pairs(self.enemies) do
 		go.delete(enemy_id)
 	end
 	self.enemies = {}
 end
 
+local function reset_variables(self)
+	self.time_adjuster = 90
+	self.velocity = -200
+	self.timer = 100
+	self.stopped = false
+end
 
 function init(self)
 	self.display_height = tonumber(sys.get_config("display.height"))
 	self.display_width = tonumber(sys.get_config("display.width"))
 
-	self.timer = 100
-	self.time_adjuster = 100
-
-	self.velocity = -250
-
-	self.stopped = false
+	reset_variables(self)
 	self.enemies = {}
 end
 
@@ -55,10 +56,7 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("stop") then
 		self.stopped = true
 	elseif message_id == hash("start") then
-		self.timer = 100
-		self.time_adjuster = 80
-		self.velocity = -150
-		self.stopped = false
+		reset_variables(self)
 	elseif message_id == hash("remove") then
 		remove_enemy(self, message.enemy_id)
 	elseif message_id == hash("remove_all_enemies") then
