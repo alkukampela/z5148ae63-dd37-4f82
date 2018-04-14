@@ -3,7 +3,7 @@ go.property("velocity", vmath.vector3())
 function init(self)
 	-- Add initialization code here
 	-- Remove this function if not needed
-	self.velocity = vmath.vector3(0, -100, 0)
+	self.velocity = vmath.vector3(0, -150, 0)
 
 	msg.post("#mustard", "disable")
 	msg.post("#mayo", "disable")
@@ -30,16 +30,18 @@ function update(self, dt)
 	local p = go.get_position() + self.velocity * dt
 	go.set_position(p)
 
-
-	print( go.get_position().y)
 	if go.get_position().y < 0 then
 		print("out of bounds")
 		msg.post("main.script", "out_of_bounds")
+		go.delete()
 	end
 	
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Remove this function if not needed
+	function on_message(self, message_id, message, sender)
+		if message_id == hash("collision_response") then
+			print("enemy says: eating happened")
+		end
+	end
 end
