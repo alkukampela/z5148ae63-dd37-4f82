@@ -9,21 +9,8 @@ function update(self)
 	if self.timer <= 0 then
 		local lane = math.random(4)
 		local pos_x = (lane - 1) * 160 + 80
-		local object_pos = vmath.vector3(pos_x, self.display_height-40, 0)
-
---[[
-
-		local startpos = vmath.vector3()
-
-		local offset = vmath.vector3()
-		offset.x = math.random(-150, 150)
-		offset.y = math.random(-150, 150)
-		
-		local dir = vmath.normalize(startpos)
-		
-		local v =  dir * math.random(0, 100)
-]]--
---		local v = vmath.vector3(0, 100, 0)
+		local object_pos = vmath.vector3(pos_x, self.display_height - 40, 0)
+		local v = vmath.vector3(0, 100, 0)
 		
 		factory.create("#objectfactory", object_pos, nil)
 		self.timer = 100;

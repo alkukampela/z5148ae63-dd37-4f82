@@ -12,25 +12,19 @@ function final(self)
 end
 
 function update(self, dt)
-
-	print(self.velocity)
-	
 	local p = go.get_position() + self.velocity * dt
 	go.set_position(p)
+
+
+	print( go.get_position().y)
+	if go.get_position().y < 0 then
+		print("out of bounds")
+		msg.post("main.script", "out_of_bounds")
+	end
 	
 end
 
 function on_message(self, message_id, message, sender)
 	-- Add message-handling code here
-	-- Remove this function if not needed
-end
-
-function on_input(self, action_id, action)
-	-- Add input-handling code here
-	-- Remove this function if not needed
-end
-
-function on_reload(self)
-	-- Add reload-handling code here
 	-- Remove this function if not needed
 end
