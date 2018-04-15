@@ -31,6 +31,16 @@ local function set_state(self, new_state)
 	self.current_state = new_state
 end
 
+local function switch_state(self)
+	if self.current_state == "state_mayo" then
+		set_state(self, "state_mustard")
+	elseif self.current_state == "state_mustard" then
+		set_state(self, "state_ketchup")
+	else
+		set_state(self, "state_mayo")
+	end
+end
+
 local function set_lane(self, lane, animate)
 	if lane > 0 and lane < lanes + 1 then
 		self.lane = lane
@@ -89,6 +99,8 @@ function on_input(self, action_id, action)
 			set_state(self, "state_mustard")
 		elseif action_id == hash("ketchup") then
 			set_state(self, "state_ketchup")
+		elseif (action_id == hash("click") and action.pressed) then
+			switch_state(self)
 		elseif action_id == hash("left") then
 			set_lane(self, self.lane - 1, true)
 		elseif action_id == hash("right") then
