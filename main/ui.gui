@@ -4,10 +4,6 @@ fonts {
   font: "/builtins/fonts/system_font.font"
 }
 fonts {
-  name: "monoton"
-  font: "/assets/fonts/monoton.font"
-}
-fonts {
   name: "fredoka"
   font: "/assets/fonts/fredoka.font"
 }

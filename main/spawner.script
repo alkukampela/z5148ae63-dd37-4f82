@@ -22,17 +22,21 @@ local function reset_variables(self)
 end
 
 function init(self)
+	math.randomseed(socket.gettime()) 
+	
 	self.display_height = tonumber(sys.get_config("display.height"))
 	self.display_width = tonumber(sys.get_config("display.width"))
-
+	self.lanes = 4
+	self.lane_width = self.display_width / self.lanes
+	
 	reset_variables(self)
 	self.enemies = {}
 end
 
 function update(self)
 	if self.timer <= 0 and self.stopped == false then
-		local lane = math.random(4)
-		local pos_x = (lane - 1) * 160 + 80
+		local lane = math.random(self.lanes)
+		local pos_x = (lane - 1) * self.lane_width + (self.lane_width / 2)
 		local object_pos = vmath.vector3(pos_x, self.display_height + 90, 0)
 		local velocity = vmath.vector3(0, self.velocity, 0)
 
