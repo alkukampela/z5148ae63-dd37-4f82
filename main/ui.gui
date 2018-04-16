@@ -9,11 +9,11 @@ fonts {
 }
 textures {
   name: "game_over"
-  texture: "/main/game_over.atlas"
+  texture: "/main/ui.atlas"
 }
 textures {
   name: "new_game_button"
-  texture: "/main/new_game_button.atlas"
+  texture: "/main/ui.atlas"
 }
 background_color {
   x: 0.0

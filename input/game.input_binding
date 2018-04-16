@@ -1,14 +1,14 @@
 key_trigger {
   input: KEY_Z
-  action: "mustard"
+  action: "yellow"
 }
 key_trigger {
   input: KEY_X
-  action: "ketchup"
+  action: "blue"
 }
 key_trigger {
   input: KEY_C
-  action: "mayo"
+  action: "green"
 }
 key_trigger {
   input: KEY_LEFT

@@ -1,13 +1,13 @@
-local states = { "state_mayo", "state_mustard", "state_ketchup"}
+local states = { "state_green", "state_yellow", "state_blue"}
 local idle_animations = {
-	["state_mayo"] = "green_idle",
-	["state_mustard"] = "yellow_idle",
-	["state_ketchup"] = "blue_idle"
+	["state_green"] = "green_idle",
+	["state_yellow"] = "yellow_idle",
+	["state_blue"] = "blue_idle"
 }
 local eat_animations = {
-	["state_mayo"] = "green_eat",
-	["state_mustard"] = "yellow_eat",
-	["state_ketchup"] = "blue_eat"
+	["state_green"] = "green_eat",
+	["state_yellow"] = "yellow_eat",
+	["state_blue"] = "blue_eat"
 }
 
 local y_offset = 60
@@ -33,12 +33,12 @@ local function set_state(self, new_state)
 end
 
 local function switch_state(self)
-	if self.current_state == "state_mayo" then
-		set_state(self, "state_mustard")
-	elseif self.current_state == "state_mustard" then
-		set_state(self, "state_ketchup")
+	if self.current_state == "state_green" then
+		set_state(self, "state_yellow")
+	elseif self.current_state == "state_yellow" then
+		set_state(self, "state_blue")
 	else
-		set_state(self, "state_mayo")
+		set_state(self, "state_green")
 	end
 end
 
@@ -62,7 +62,7 @@ local function set_lane(self, lane, animate)
 end
 
 function init(self)
-	self.current_state = "state_mayo"
+	self.current_state = "state_green"
 
 	self.lanes = 4
 	self.lane_width = tonumber(sys.get_config("display.width"))/ self.lanes
@@ -70,7 +70,7 @@ function init(self)
 	-- this tells the engine to send input to on_input() in this script
 	msg.post(".", "acquire_input_focus")
 	init_states(self)
-	set_state(self,  "state_mustard")
+	set_state(self,  self.current_state)
 	set_lane(self, 1, false)
 end
 
@@ -96,12 +96,12 @@ end
 
 function on_input(self, action_id, action)
 	if action.pressed then
-		if action_id == hash("mayo") then
-			set_state(self, "state_mayo")
-		elseif action_id == hash("mustard") then
-			set_state(self, "state_mustard")
-		elseif action_id == hash("ketchup") then
-			set_state(self, "state_ketchup")
+		if action_id == hash("green") then
+			set_state(self, "state_green")
+		elseif action_id == hash("yellow") then
+			set_state(self, "state_yellow")
+		elseif action_id == hash("blue") then
+			set_state(self, "state_blue")
 		elseif (action_id == hash("click") and action.pressed) then
 			-- Ugly way to restrict click listening to where player is
 			if action.y <= 100 then

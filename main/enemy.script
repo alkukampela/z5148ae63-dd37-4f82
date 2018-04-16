@@ -3,19 +3,19 @@ go.property("velocity", vmath.vector3(0, -100, 0))
 function init(self)
 	self.alive = true
 
-	msg.post("#mustard", "disable")
-	msg.post("#mayo", "disable")
-	msg.post("#ketchup", "disable")
+	msg.post("#yellow", "disable")
+	msg.post("#green", "disable")
+	msg.post("#blue", "disable")
 	local state = math.random(3)
 	if state == 1 then
-		self.enemy_form = "mustard"
-		msg.post("#mustard", "enable")
+		self.enemy_form = "yellow"
+		msg.post("#yellow", "enable")
 	elseif state == 2 then
-		self.enemy_form = "mayo"
-		msg.post("#mayo", "enable")
+		self.enemy_form = "green"
+		msg.post("#green", "enable")
 	elseif state == 3 then
-		self.enemy_form = "ketchup"
-		msg.post("#ketchup", "enable")
+		self.enemy_form = "blue"
+		msg.post("#blue", "enable")
 	end
 
 	self.points = self.velocity.y * self.velocity.y

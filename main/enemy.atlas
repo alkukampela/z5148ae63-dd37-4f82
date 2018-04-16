@@ -137,7 +137,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "ketchup_fade"
+  id: "blue_fade"
   images {
     image: "/assets/images/collision/blue-fading-01.png"
   }
@@ -162,7 +162,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "mayo_fade"
+  id: "green_fade"
   images {
     image: "/assets/images/collision/green-fading-01.png"
   }
@@ -187,7 +187,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "mustard_fade"
+  id: "yellow_fade"
   images {
     image: "/assets/images/collision/yellow-fading-01.png"
   }

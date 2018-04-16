@@ -1,7 +1,7 @@
 name: "player"
 scale_along_z: 0
 embedded_instances {
-  id: "state_mayo"
+  id: "state_green"
   data: "embedded_components {\n"
   "  id: \"player_sprite\"\n"
   "  type: \"sprite\"\n"
@@ -168,7 +168,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "state_mustard"
+  id: "state_yellow"
   data: "embedded_components {\n"
   "  id: \"player_sprite\"\n"
   "  type: \"sprite\"\n"
@@ -255,7 +255,7 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "state_ketchup"
+  id: "state_blue"
   data: "embedded_components {\n"
   "  id: \"player_sprite\"\n"
   "  type: \"sprite\"\n"

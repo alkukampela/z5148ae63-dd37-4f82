@@ -61,7 +61,7 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "ketchup"
+  id: "blue"
   type: "sprite"
   data: "tile_set: \"/main/enemy.atlas\"\n"
   "default_animation: \"blue_enemy\"\n"
@@ -81,7 +81,7 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "mayo"
+  id: "green"
   type: "sprite"
   data: "tile_set: \"/main/enemy.atlas\"\n"
   "default_animation: \"green_enemy\"\n"
@@ -101,7 +101,7 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "mustard"
+  id: "yellow"
   type: "sprite"
   data: "tile_set: \"/main/enemy.atlas\"\n"
   "default_animation: \"yellow_enemy\"\n"
