@@ -2,9 +2,9 @@
 
 z = yellow
 
-x = blue
+x = green
 
-c = green
+c = blue
 
 arrow left and arrow right move
 
