@@ -1,8 +1,12 @@
+local min_spawn_interval = 35
+local max_spawn_addition = 100
+local speed_adjuster = 7
+
 local function remove_enemy(self, enemy_id) 
 	for key, value in pairs(self.enemies) do
 		if value == enemy_id then
 			table.remove(self.enemies, key)
-			break
+			return
 		end
 	end
 end
@@ -15,9 +19,8 @@ local function remove_all_enemies(self)
 end
 
 local function reset_variables(self)
-	self.time_adjuster = 90
-	self.velocity = -200
-	self.timer = 100
+	self.velocity = math.random(-220, -200)
+	self.timer = min_spawn_interval
 	self.stopped = false
 end
 
@@ -33,24 +36,21 @@ function init(self)
 	self.enemies = {}
 end
 
-function update(self)
+function update(self, dt)
 	if self.timer <= 0 and self.stopped == false then
 		local lane = math.random(self.lanes)
 		local pos_x = (lane - 1) * self.lane_width + (self.lane_width / 2)
 		local object_pos = vmath.vector3(pos_x, self.display_height + 90, 0)
-		local velocity = vmath.vector3(0, self.velocity, 0)
 
-		local id = factory.create("#enemyfactory", object_pos, nil, {velocity = velocity})
+		local velocity = self.velocity - math.random(25)
+		local velocityVector = vmath.vector3(0, velocity, 0)
+
+		local id = factory.create("#enemyfactory", object_pos, nil, {velocity = velocityVector})
 		table.insert(self.enemies, id)
 
 		-- Schedule next spawn and its velocity
-		self.timer = math.random(100) + self.time_adjuster;
-
-		if self.time_adjuster > 0 then
-			self.time_adjuster = self.time_adjuster - 1
-		end
-
-		self.velocity = self.velocity - math.random(20)
+		self.timer = min_spawn_interval + (math.sin(socket.gettime()) + 1) * max_spawn_addition
+		self.velocity = self.velocity - speed_adjuster
 	end
 
 	self.timer = self.timer - 1

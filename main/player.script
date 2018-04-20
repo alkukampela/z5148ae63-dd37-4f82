@@ -1,19 +1,21 @@
-local states = { "state_green", "state_yellow", "state_blue"}
+local states = { "state_yellow", "state_green", "state_blue"}
 local idle_animations = {
-	["state_green"] = "green_idle",
 	["state_yellow"] = "yellow_idle",
-	["state_blue"] = "blue_idle"
+	["state_blue"] = "blue_idle",
+	["state_green"] = "green_idle"
 }
 local eat_animations = {
-	["state_green"] = "green_eat",
 	["state_yellow"] = "yellow_eat",
-	["state_blue"] = "blue_eat"
+	["state_blue"] = "blue_eat",
+	["state_green"] = "green_eat"
 }
 
 local y_offset = 60
 
 local function animation_idle(self)
-	msg.post(self.current_state .. "#player_sprite", "play_animation", {id = hash(idle_animations[self.current_state])})
+	msg.post(self.current_state .. "#player_sprite", 
+			"play_animation", 
+			{id = hash(idle_animations[self.current_state])})
 end
 
 local function init_states(self)
@@ -65,12 +67,12 @@ function init(self)
 	self.current_state = "state_green"
 
 	self.lanes = 4
-	self.lane_width = tonumber(sys.get_config("display.width"))/ self.lanes
+	self.lane_width = tonumber(sys.get_config("display.width")) / self.lanes
 	
 	-- this tells the engine to send input to on_input() in this script
 	msg.post(".", "acquire_input_focus")
 	init_states(self)
-	set_state(self,  self.current_state)
+	set_state(self, self.current_state)
 	set_lane(self, 1, false)
 end
 
@@ -86,7 +88,9 @@ function on_message(self, message_id, message, sender)
 		if self.current_state == "state_" .. message.form then
 			msg.post("player#eat_sound", "play_sound")
 			msg.post("/main#script", "add_score", { points = message.points })
-			msg.post(self.current_state .. "#player_sprite", "play_animation", {id = hash(eat_animations[self.current_state])})
+			msg.post(self.current_state .. "#player_sprite", 
+					"play_animation", 
+					{id = hash(eat_animations[self.current_state])})
 		else
 			msg.post("/main#script", "wrong_collision")
 			msg.post(self.current_state .. "#player_sprite", "play_animation", {id = hash("game_over")})
@@ -96,17 +100,15 @@ end
 
 function on_input(self, action_id, action)
 	if action.pressed then
-		if action_id == hash("green") then
-			set_state(self, "state_green")
-		elseif action_id == hash("yellow") then
+		if action_id == hash("yellow") then
 			set_state(self, "state_yellow")
 		elseif action_id == hash("blue") then
 			set_state(self, "state_blue")
-		elseif (action_id == hash("click") and action.pressed) then
-			-- Ugly way to restrict click listening to where player is
-			if action.y <= 100 then
-				switch_state(self)
-			end
+		elseif action_id == hash("green") then
+				set_state(self, "state_green")
+		elseif action_id == hash("click") and action.pressed and 
+				action.y <= 100 then -- Ugly way to restrict click listening to where player is
+			switch_state(self)
 		elseif action_id == hash("left") then
 			set_lane(self, self.lane - 1, true)
 		elseif action_id == hash("right") then

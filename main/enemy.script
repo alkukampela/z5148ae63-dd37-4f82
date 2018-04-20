@@ -18,7 +18,7 @@ function init(self)
 		msg.post("#blue", "enable")
 	end
 
-	self.points = self.velocity.y * self.velocity.y
+	self.points = self.velocity.y^2
 end
 
 

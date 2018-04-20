@@ -4,11 +4,11 @@ key_trigger {
 }
 key_trigger {
   input: KEY_X
-  action: "blue"
+  action: "green"
 }
 key_trigger {
   input: KEY_C
-  action: "green"
+  action: "blue"
 }
 key_trigger {
   input: KEY_LEFT

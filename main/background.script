@@ -1,4 +1,4 @@
-local pieceHeight = 960
+local spriteHeight = 960
 
 local layers = {
 	{ speed = 20, pieces = { "bg1#sprite1", "bg1#sprite2" } },
@@ -9,11 +9,11 @@ local layers = {
 function update(self, dt) 
 
 	for i, layer in ipairs(layers) do
-		for i, piece in ipairs(layer.pieces) do
+		for j, piece in ipairs(layer.pieces) do
 			local position = go.get_position(piece)
 			
-			if position.y <= (pieceHeight / -2) then
-				position.y = pieceHeight / 2
+			if position.y <= (spriteHeight / -2) then
+				position.y = spriteHeight / 2
 			end
 
 			position.y = position.y - layer.speed * dt 
