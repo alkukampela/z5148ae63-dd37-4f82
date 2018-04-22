@@ -1,3 +1,4 @@
+local gesture = require "main.gesture"
 local states = { "state_yellow", "state_green", "state_blue"}
 local idle_animations = {
 	["state_yellow"] = "yellow_idle",
@@ -34,13 +35,32 @@ local function set_state(self, new_state)
 	self.current_state = new_state
 end
 
-local function switch_state(self)
-	if self.current_state == "state_green" then
-		set_state(self, "state_yellow")
-	elseif self.current_state == "state_yellow" then
-		set_state(self, "state_blue")
+local function switch_state(self, direction)
+	local state_count = table.getn(states)
+	local index
+	
+	for i, state in ipairs(states) do
+		if self.current_state == state then
+			index = i
+		end 
+	end 
+
+	if direction == 'next' then
+		index = index - 1
+		if index == 0 then
+			index = state_count
+		end
 	else
-		set_state(self, "state_green")
+		index = index + 1
+		if index > state_count then
+			index = 1
+		end
+	end
+	
+	for i, state in ipairs(states) do
+		if index == i then
+			set_state(self, state)
+		end
 	end
 end
 
@@ -64,6 +84,7 @@ local function set_lane(self, lane, animate)
 end
 
 function init(self)
+	gesture.SETTINGS.double_tap_interval = 1
 	self.current_state = "state_green"
 
 	self.lanes = 4
@@ -99,6 +120,22 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
+	local g = gesture.on_input(self, action_id, action)
+
+	if g then
+		if g.swipe_left then
+			
+			set_lane(self, self.lane - 1, true)
+		elseif g.swipe_right then
+			
+			set_lane(self, self.lane + 1, true)
+		elseif g.swipe_up then
+			switch_state(self, "next")
+		elseif g.swipe_down then
+			switch_state(self, "prev")
+		end
+	end
+
 	if action.pressed then
 		if action_id == hash("yellow") then
 			set_state(self, "state_yellow")
@@ -106,13 +143,15 @@ function on_input(self, action_id, action)
 			set_state(self, "state_blue")
 		elseif action_id == hash("green") then
 				set_state(self, "state_green")
-		elseif action_id == hash("click") and action.pressed and 
-				action.y <= 100 then -- Ugly way to restrict click listening to where player is
-			switch_state(self)
 		elseif action_id == hash("left") then
 			set_lane(self, self.lane - 1, true)
 		elseif action_id == hash("right") then
 			set_lane(self, self.lane + 1, true)
+		elseif action_id == hash("state_next") then
+			switch_state(self, "next")
+		elseif action_id == hash("state_prev") then
+			switch_state(self, "prev")
 		end
 	end
+	
 end
