@@ -8,7 +8,7 @@ end
 local function do_game_over_things(self)
 	self.stopped = true
 	msg.post("/main#game_over_sound", "play_sound")
-	msg.post("ui#gui", "game_over")
+	msg.post("ui#gui", "game_over", { score = self.score })
 	msg.post("spawner#spawner", "stop")
 	msg.post("spawner#spawner", "remove_all_enemies")
 end

@@ -1,14 +1,19 @@
-function start_new_game(self)
+local function set_main_menu_visibility(self, enabled) 
+	gui.set_enabled(gui.get_node("game_over"), enabled)
+	gui.set_enabled(gui.get_node("new_game_button"), enabled)
+	gui.set_enabled(gui.get_node("scoresheet"), enabled)
+	gui.set_enabled(gui.get_node("score"), not enabled)
+end
+
+local function start_new_game(self)
 	self.stopped = false
 	msg.post("main#script", "new_game")
-	gui.set_enabled(gui.get_node("game_over"), false)
-	gui.set_enabled(gui.get_node("new_game_button"), false)
+	set_main_menu_visibility(self, false)
 end
 
 function init(self) 
 	self.stopped = false
-	gui.set_enabled(gui.get_node("game_over"), false)
-	gui.set_enabled(gui.get_node("new_game_button"), false)
+	set_main_menu_visibility(self, false)
 	msg.post(".", "acquire_input_focus")
 end
 
@@ -17,8 +22,8 @@ function on_message(self, message_id, message, sender)
 		gui.set_text(gui.get_node("score"), string.format("%09d", message.score))
 	elseif message_id == hash("game_over") then
 		self.stopped = true
-		gui.set_enabled(gui.get_node("game_over"), true)
-		gui.set_enabled(gui.get_node("new_game_button"), true)
+		gui.set_text(gui.get_node("score_points"), string.format("%09d", message.score))
+		set_main_menu_visibility(self, true)
 	end
 end
 
