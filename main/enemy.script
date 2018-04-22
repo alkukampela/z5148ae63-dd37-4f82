@@ -10,12 +10,15 @@ function init(self)
 	if state == 1 then
 		self.enemy_form = "yellow"
 		msg.post("#yellow", "enable")
+		msg.post("#yellow_sound", "play_sound")
 	elseif state == 2 then
 		self.enemy_form = "green"
 		msg.post("#green", "enable")
+		msg.post("#green_sound", "play_sound")
 	elseif state == 3 then
 		self.enemy_form = "blue"
 		msg.post("#blue", "enable")
+		msg.post("#blue_sound", "play_sound")
 	end
 
 	self.points = self.velocity.y^2
