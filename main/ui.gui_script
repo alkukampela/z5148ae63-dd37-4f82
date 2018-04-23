@@ -23,6 +23,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("game_over") then
 		self.stopped = true
 		gui.set_text(gui.get_node("score_points"), string.format("%09d", message.score))
+		gui.set_text(gui.get_node("topscore"), string.format("%09d", message.topscore))
 		set_main_menu_visibility(self, true)
 	end
 end

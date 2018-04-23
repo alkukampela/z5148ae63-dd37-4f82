@@ -22,6 +22,7 @@ local function reset_variables(self)
 	self.velocity = math.random(-220, -200)
 	self.timer = min_spawn_interval
 	self.stopped = false
+	msg.post("/spawner#humppa", "play_sound", { gain = 0.1 })
 end
 
 function init(self)

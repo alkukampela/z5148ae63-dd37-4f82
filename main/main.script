@@ -1,20 +1,32 @@
+local function get_topscore(self, score)
+	if score > self.topscore then
+		self.topscore = score
+	end
+	return self.topscore
+end
+
 local function update_score(self, amount) 
 	if self.stopped == false then
 		self.score = self.score + amount
-		msg.post("ui#gui", "set_score", { score = self.score })
+		msg.post("ui#gui", "set_score", { score = self.score})
 	end
 end
 
 local function do_game_over_things(self)
 	self.stopped = true
+	
 	msg.post("/main#game_over_sound", "play_sound")
-	msg.post("ui#gui", "game_over", { score = self.score })
+	msg.post("ui#gui", "game_over", { score = self.score, 
+										topscore = get_topscore(self, self.score)
+									})
 	msg.post("spawner#spawner", "stop")
 	msg.post("spawner#spawner", "remove_all_enemies")
+	msg.post("spawner#humppa", "stop_sound")
 end
 
 function init(self)
 	self.score = 0
+	self.topscore = 0
 	self.stopped = false
 end
 
